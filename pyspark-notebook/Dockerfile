@@ -46,6 +46,10 @@ ENV SPARK_HOME=/usr/local/spark
 ENV PYTHONPATH="${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-${py4j_version}-src.zip" \
     SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
     PATH=$PATH:$SPARK_HOME/bin
+    
+# Set-up MongoConnector
+# Source https://spark-packages.org/package/mongodb/mongo-spark
+SHELL $SPARK_HOME/bin/spark-shell --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.0
 
 USER $NB_UID
 
